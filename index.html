@@ -88,6 +88,23 @@ const inputÜbung = document.getElementById('übung');
 const btnEintragen = document.getElementById('ContainerEintragen');
 const containerhistory = document.getElementById('ContainerÜbungenhistory')
 
+ // Funktion zum Speichern der Übung im Local Storage
+ const saveÜbung = (übung) => {
+            let history = JSON.parse(localStorage.getItem('history')) || [];
+            history.push(übung);
+            localStorage.setItem('history', JSON.stringify(history));
+        };
+
+        // Funktion zum Laden der Übungen aus dem Local Storage
+        const loadÜbungen = () => {
+            const history = JSON.parse(localStorage.getItem('history')) || [];
+            history.forEach(übung => {
+                const neueÜbung = document.createElement('div');
+                neueÜbung.className = 'history-item';
+                neueÜbung.textContent = übung;
+                containerhistory.appendChild(neueÜbung);
+            });
+        };
 
 
     //Eintragen Funktion
@@ -106,6 +123,10 @@ const containerhistory = document.getElementById('ContainerÜbungenhistory')
 
     containerhistory.appendChild(neueÜbung);
 
+
+    // Übung im Local Storage speichern
+        saveÜbung(Übungsname);
+
     //freies
 
     inputÜbung.value = ""; 
@@ -114,10 +135,9 @@ const containerhistory = document.getElementById('ContainerÜbungenhistory')
         }
     }
     ;
+     // Lade die Übungen beim Start der Seite
+     window.onload = loadÜbungen;
 </script>
 
-
-
-</script>
 </body>
 </html>
