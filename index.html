@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übungs-Tracker</title>
+    <style>
+        body
+        {
+          margin: 0px;
+          padding: 0px;
+        }
+
+        h1 {
+            font-size: 30px;
+        }
+        #ContainerÜbungen {
+            width: 200px;
+            height: auto;
+            color: black;
+            background-color: aliceblue;
+            border: solid;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+        #ContainerÜbungenhistory {
+            width: 200px;
+            margin-top: 15px;
+            color: aliceblue;
+            background-color: aliceblue;
+            border: solid;
+            border-color: black;
+            padding: 20px;
+            max-height: 200px;
+            border-radius: 10px;
+            overflow: auto;
+        }
+
+        #ContainerEintragen {
+            width: 150px;
+            height: 30px;
+            margin-top: 15px;
+            padding: 10px;
+            text-align: center;
+            color: black;
+            background-color: rgb(223, 191, 225);
+            border: solid;
+            border-radius: 10px;
+            border-color: black;
+            cursor: pointer;
+        }
+
+        .history-item {
+            margin-top: 5px;  /* Abstand zwischen den Übungen */
+            padding: 5px;     /* Innenabstand der Übungen */
+            background-color: lightgray;  /* Hintergrundfarbe für die Übungen */
+            border-radius: 5px;  /* Abgerundete Ecken */
+            border: solid 1px black;  /* Schwarzer Rahmen */
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Übungs-Tracker Ela Knauf</h1>
+        <div id = "ContainerÜbungen">
+        <label for="übung">Übungsname:</label></br>
+        <input type="text" id="übung" placeholder="z.B. Englisch Übung 07.10.24"></div>
+        <div id = "ContainerEintragen">Übung eintragen</div>
+        <h3>Übersicht</h3>
+        <div id ="ContainerÜbungenhistory"></div>
+
+<script>
+const inputÜbung = document.getElementById('übung');
+const btnEintragen = document.getElementById('ContainerEintragen');
+const containerhistory = document.getElementById('ContainerÜbungenhistory')
+
+
+
+    //Eintragen Funktion
+
+    btnEintragen.onclick = () => {
+        const Übungsname = inputÜbung.value;
+    
+
+    if (Übungsname.trim() !=="") {
+        const neueÜbung = document.createElement('div');
+        neueÜbung.className = 'history-item';
+        neueÜbung.textContent = Übungsname;
+    
+
+    //dem historycontainer beifügen
+
+    containerhistory.appendChild(neueÜbung);
+
+    //freies
+
+    inputÜbung.value = ""; 
+     } else {
+            alert("Bitte geben Sie einen Übungsnamen ein.");
+        }
+    }
+    ;
+</script>
+
+
+
+</script>
+</body>
+</html>
